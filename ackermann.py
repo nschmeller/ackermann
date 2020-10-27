@@ -12,6 +12,14 @@ def ack_inner(m, n, ind):
     return ack_inner(m-1, ack_inner(m, n-1, ind+1), ind+1)
 
 def ack(m, n):
+    if m < 0 or n < 0:
+      raise ValueError('expected nonnegative inputs')
     return ack_inner(m, n, 0)
 
-ack(int(sys.argv[1]), int(sys.argv[2]))
+m = int(sys.argv[1])
+n = int(sys.argv[2])
+
+res = ack(m, n)
+
+print()
+print('ack({0}, {1}) = {2}'.format(m, n, res))
